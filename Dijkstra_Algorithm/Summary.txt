@@ -1,0 +1,44 @@
+Application Overview
+A system that models a graph of planets and their connections via routes, for the purpose of calculating shortest paths and providing information about planets and routes.
+
+Key Components and Their Roles
+Algorithms
+
+Dijkstra’s Algorithm: Used to calculate the shortest path between two planets in a graph. The AlgorithmDefinition class provides the implementation, including data structures for nodes, a comparator for priority queues, and methods to perform the shortest path calculations.
+Models
+
+PlanetNames: Represents information about planets, including an ID, node identifier, and planet name.
+Routes: Represents a route between two planets, including an ID, origin planet, destination planet, and distance in light years.
+Traffic: Represents traffic-related information, though its implementation appears incomplete.
+Repositories
+
+PlanetNamesRepository: Provides CRUD operations for the PlanetNames model.
+RoutesRepository: Provides CRUD operations for the Routes model.
+Services
+
+PlanetNamesService: Defines methods for retrieving planet names.
+RoutesService: Defines methods for retrieving route data and managing routes. Its implementation (RoutesImplementation) includes methods for fetching all routes, retrieving routes by ID, and placeholder methods for future route retrieval by nodes.
+Controllers
+
+PlanetNamesController: Exposes an endpoint (/allPlanets) to retrieve all planets from the PlanetNamesService.
+RouteController:
+Provides an endpoint (/allRoutes) to retrieve all routes.
+Provides an endpoint (/shortestRoute/{start}/{end}) to compute and return the shortest path between two specified planets using Dijkstra's algorithm.
+Configuration
+
+WebConfig: Configures Cross-Origin Resource Sharing (CORS) to allow requests from a specific origin (e.g., http://localhost:4200).
+Application Entry Point
+
+InterviewApplication: The main class to run the Spring Boot application. Includes commented-out code for reading data from an Excel file, although it’s not currently active.
+Functional Flow
+Data Retrieval:
+
+The application can retrieve lists of planets and routes from the database using the provided controllers and services.
+Shortest Path Calculation:
+
+The RouteController’s /shortestRoute/{start}/{end} endpoint builds a graph from the route data and computes the shortest path between two planets using Dijkstra's algorithm.
+Integration and Configuration:
+
+CORS Configuration: Ensures that the frontend (presumably running on localhost:4200) can interact with the backend API.
+Summary
+The application provides an API for querying planet and route information and calculating the shortest path between planets. It integrates with a database to manage planet and route data, uses Dijkstra's algorithm for pathfinding, and is configured to allow interactions from a specific frontend application through CORS settings.
